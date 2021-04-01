@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IPet } from '../model/pet.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,15 +13,15 @@ export class PetService {
     this.baseUrl = 'https://petstore.swagger.io/';
   }
 
-  loadPets(): Observable<any[]> {
-    var pets = this.http.get<any[]>(
+  loadPets(): Observable<IPet[]> {
+    var pets = this.http.get<IPet[]>(
       `${this.baseUrl}v2/pet/findByStatus?status=available&status=sold&status=pending`
     );
     return pets;
   }
 
-  loadPet(id: number): Observable<any[]> {
-    var pets = this.http.get<any[]>(`${this.baseUrl}v2/pet/${id}`);
+  loadPet(id: number): Observable<IPet[]> {
+    var pets = this.http.get<IPet[]>(`${this.baseUrl}v2/pet/${id}`);
     return pets;
   }
 }

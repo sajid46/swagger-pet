@@ -1,1 +1,96 @@
-<p>pet-list works!</p>
+<div class="container-fluid">
+  <div class="container">
+    <div class="css-container-child" *ngIf="pets$ | async as pets">
+      <span class="material-icons"> add </span>
+      <div>
+        <div
+          class="css-each-page-title col-xs-12 col-sm-12 col-md-12 col-lg-12"
+        >
+          <div class="w-100 text-center">
+            <h1>Pets</h1>
+          </div>
+          <hr />
+          <div
+            class="css-each-page-title col-xs-12 col-sm-12 col-md-12 col-lg-12"
+          >
+            <div class="table">
+              <div *ngFor="let pet of pets; let i = index" class="row">
+                <div class="cell">
+                  {{ pet.id }}
+                </div>
+
+                <div class="cell">
+                  {{ pet.name | uppercase }}
+                </div>
+                <div class="cell">
+                  {{ pet.PhotoUrl }}
+                </div>
+                <div class="cell">
+                  {{ pet.status }}
+                </div>
+                <div class="cell">
+                  <span class="material-icons"> remove_red_eye </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div>
+            <div class="flex-container">
+              <div
+                *ngFor="let item of headers"
+                class="flex-item"
+                style="
+                  background-color: rgb(214, 208, 175);
+                  border-right: 1px solid red;
+                "
+              >
+                {{ item }}
+              </div>
+            </div>
+            <div class="flex-container">
+              <div *ngFor="let item of rates; let i = index">
+                <div class="flex-item" style="width: 120px">
+                  {{ rates[385][i] }}
+                </div>
+                <div class="flex-tem">{{ item.CAD }}</div>
+                <div class="flex-tem">{{ item.HKD }}</div>
+                <div class="flex-tem">{{ item.ISK | number: "3.2" }}</div>
+                <div class="flex-tem">{{ item.PHP }}</div>
+                <div class="flex-tem">{{ item.DKK }}</div>
+                <div class="flex-tem">{{ item.HUF }}</div>
+                <div class="flex-tem">{{ item.CZK }}</div>
+                <div class="flex-tem">{{ item.AUD }}</div>
+                <div class="flex-tem">{{ item.RON }}</div>
+                <div class="flex-tem">{{ item.SEK }}</div>
+                <div class="flex-tem">{{ item.IDR }}</div>
+                <div class="flex-tem">{{ item.INR }}</div>
+                <div class="flex-tem">{{ item.BRL }}</div>
+                <div class="flex-tem">{{ item.RUB }}</div>
+                <div class="flex-tem">{{ item.HRK }}</div>
+                <div class="flex-tem">{{ item.JPY }}</div>
+                <div class="flex-tem">{{ item.THB }}</div>
+                <div class="flex-tem">{{ item.CHF }}</div>
+                <div class="flex-tem">{{ item.SGD }}</div>
+                <div class="flex-tem">{{ item.PLN }}</div>
+                <div class="flex-tem">{{ item.BGN }}</div>
+                <div class="flex-tem">{{ item.TRY }}</div>
+                <div class="flex-tem">{{ item.CNY }}</div>
+                <div class="flex-tem">{{ item.NOK }}</div>
+                <div class="flex-tem">{{ item.NZD }}</div>
+                <div class="flex-tem">{{ item.ZAR }}</div>
+                <div class="flex-tem">{{ item.USD }}</div>
+                <div class="flex-tem">{{ item.MXN }}</div>
+                <div class="flex-tem">{{ item.ILS }}</div>
+                <div class="flex-tem">{{ item.GBP }}</div>
+                <div class="flex-tem">{{ item.KRW }}</div>
+                <div class="flex-tem">{{ item.MYR }}</div>
+              </div>
+            </div>
+          </div> -->
+      </div>
+      <!-- <div *ngIf="!xerates">No Mission Found</div> -->
+    </div>
+  </div>
+</div>

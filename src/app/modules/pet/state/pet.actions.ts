@@ -1,11 +1,11 @@
 import { createAction, props } from '@ngrx/store';
-import { IPet } from '../shared/model/pets.model';
+import { IPet } from '../shared/model/pet.model';
 
 export const loadPets = createAction('[Pets] Load Pets');
 
 export const loadPetsSuccess = createAction(
   '[Pets] Load Pets Success',
-  props<{ pets: any[] }>()
+  props<{ pets: IPet[] }>()
 );
 
 export const loadPetsFail = createAction(

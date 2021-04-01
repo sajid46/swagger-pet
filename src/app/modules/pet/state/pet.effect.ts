@@ -1,26 +1,23 @@
-import { XeRateService } from './../shared/services/pets.service';
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import * as XeRateActions from './pets.actions';
+import * as PetActions from './pet.actions';
 import { mergeMap, catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { PetService } from '../shared/service/pet.service';
 
 @Injectable()
-export class XeRateEffects {
-  loadXERates$ = createEffect(() => {
+export class PetEffects {
+  loadPets$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(XeRateActions.loadPets),
+      ofType(PetActions.loadPets),
       mergeMap(() =>
-        this.petService.loadXERates().pipe(
-          map((pets) => XeRateActions.loadPetsSuccess({ pets })),
-          catchError((error) => of(XeRateActions.loadPetsFail(error)))
+        this.petService.loadPets().pipe(
+          map((pets) => PetActions.loadPetsSuccess({ pets })),
+          catchError((error) => of(PetActions.loadPetsFail(error)))
         )
       )
     );
   });
 
-  constructor(
-    private actions$: Actions,
-    private petService: XeRateService
-  ) {}
+  constructor(private actions$: Actions, private petService: PetService) {}
 }

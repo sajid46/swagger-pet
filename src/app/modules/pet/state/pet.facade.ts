@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
-import * as XeRateActions from '../state/pets.actions';
-import { getXERates } from './pets.reducer';
+import * as PetActions from '../state/pet.actions';
+import { getSelPets } from './pet.reducer';
 
 @Injectable({
   providedIn: 'root',
 })
-export class XeRateFacade {
-  pets$ = this.store.pipe(select(getXERates));
+export class PetFacade {
+  pets$ = this.store.pipe(select(getSelPets));
 
-  loadXERates(): void {
-    this.store.dispatch(XeRateActions.loadPets());
+  loadPets(): void {
+    this.store.dispatch(PetActions.loadPets());
   }
 
   constructor(private store: Store) {}

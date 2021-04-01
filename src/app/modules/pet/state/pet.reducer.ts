@@ -4,12 +4,12 @@ import {
   createFeatureSelector,
   createSelector,
 } from '@ngrx/store';
-import * as AppState from '../../../state/app.state';
-import { IPet } from '../shared/model/pets.model';
-import * as XeRateActions from './pets.actions';
+import * as AppState from '../../../shared/state/app.state';
+import { IPet } from '../shared/model/pet.model';
+import * as PetActions from './pet.actions';
 
-export interface XeRateState extends AppState.state {
-  pets: any[];
+export interface PetState extends AppState.state {
+  pets: IPet[];
   error: string;
 }
 
@@ -18,17 +18,17 @@ const initialState = {
   error: '',
 };
 
-const getXeRateFeatureState = createFeatureSelector<XeRateState>('pets');
-export const getXERates = createSelector(
-  getXeRateFeatureState,
+const getPetFeatureState = createFeatureSelector<PetState>('pets');
+export const getSelPets = createSelector(
+  getPetFeatureState,
   (state) => state.pets
 );
 
-export const XeRateReducer = createReducer<XeRateState>(
+export const PetReducer = createReducer<PetState>(
   initialState,
   on(
-    XeRateActions.loadPetsSuccess,
-    (state, action): XeRateState => {
+    PetActions.loadPetsSuccess,
+    (state, action): PetState => {
       return {
         ...state,
         pets: action.pets,
@@ -36,8 +36,8 @@ export const XeRateReducer = createReducer<XeRateState>(
     }
   ),
   on(
-    XeRateActions.loadPetsFail,
-    (state, action): XeRateState => {
+    PetActions.loadPetsFail,
+    (state, action): PetState => {
       return {
         ...state,
         pets: [],

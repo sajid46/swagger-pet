@@ -1,0 +1,29 @@
+.container-fluid {
+  position: absolute;
+  top: 0;
+  padding-top: 80px;
+
+  .container {
+    background-color: #ffffff;
+    top: 0px !important;
+    box-shadow: 0px 0px 10px #43484c;
+
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+      letter-spacing: 5px;
+    }
+
+    .table {
+      display: table;
+    }
+    .row {
+      display: table-row;
+    }
+    .cell {
+      display: table-cell;
+      border-bottom: 1px solid rgb(126, 176, 190);
+      padding: 4px;
+    }
+  }
+}
