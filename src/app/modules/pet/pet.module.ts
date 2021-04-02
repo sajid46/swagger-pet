@@ -11,6 +11,8 @@ import { PetComponent } from './pet.component';
 import { PetShellComponent } from './pet-shell/pet-shell.component';
 import { PetListComponent } from './pet-list/pet-list.component';
 import { PetCreateComponent } from './pet-create/pet-create.component';
+import { PetDetailDialogComponent } from './dialog/pet-detail/pet-detail-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [{ path: '', component: PetComponent }];
 
@@ -20,6 +22,7 @@ const routes: Routes = [{ path: '', component: PetComponent }];
     PetShellComponent,
     PetListComponent,
     PetCreateComponent,
+    PetDetailDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +30,8 @@ const routes: Routes = [{ path: '', component: PetComponent }];
     EffectsModule.forFeature([PetEffects]),
     StoreModule.forFeature('pets', PetReducer),
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class PetModule {}

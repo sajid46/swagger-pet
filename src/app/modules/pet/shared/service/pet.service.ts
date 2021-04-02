@@ -15,7 +15,20 @@ export class PetService {
 
   loadPets(): Observable<IPet[]> {
     var pets = this.http.get<IPet[]>(
-      `${this.baseUrl}v2/pet/findByStatus?status=available&status=sold&status=pending`
+      `${this.baseUrl}v2/pet/findByStatus?status=available`
+    );
+    return pets;
+  }
+
+  loadPendingPets(): Observable<IPet[]> {
+    var pets = this.http.get<IPet[]>(
+      `${this.baseUrl}v2/pet/findByStatus?status=pending`
+    );
+    return pets;
+  }
+  loadSoldPets(): Observable<IPet[]> {
+    var pets = this.http.get<IPet[]>(
+      `${this.baseUrl}v2/pet/findByStatus?status=sold`
     );
     return pets;
   }

@@ -9,7 +9,7 @@ import { IPet } from '../shared/model/pet.model';
 import * as PetActions from './pet.actions';
 
 export interface PetState extends AppState.state {
-  pets: IPet[];
+  pets: any[];
   error: string;
 }
 
@@ -31,7 +31,7 @@ export const PetReducer = createReducer<PetState>(
     (state, action): PetState => {
       return {
         ...state,
-        pets: action.pets,
+        pets: state.pets.concat(action.pets),
       };
     }
   ),

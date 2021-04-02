@@ -1,1 +1,23 @@
-<app-pet-list [pets$]="pets$"></app-pet-list>
+<div class="container-fluid" *ngIf="showPetCreate == false">
+  <div class="container">
+    <button
+      mat-fab
+      color="white"
+      class="m-3 mt-5"
+      aria-label="Example icon button with a delete icon"
+      (click)="addPet()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
+    <app-pet-list
+      [pets$]="pets$"
+      (petDetailEvent)="onPetDetailEventListener($event)"
+    ></app-pet-list>
+  </div>
+</div>
+
+<app-pet-create
+  (hideCreateForm)="onHideCreateForm()"
+  *ngIf="showPetCreate == true"
+></app-pet-create>

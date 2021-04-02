@@ -19,5 +19,29 @@ export class PetEffects {
     );
   });
 
+  loadPendingPets$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(PetActions.loadPets),
+      mergeMap(() =>
+        this.petService.loadPendingPets().pipe(
+          map((pets) => PetActions.loadPetsSuccess({ pets })),
+          catchError((error) => of(PetActions.loadPetsFail(error)))
+        )
+      )
+    );
+  });
+
+  loadSoldPets$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(PetActions.loadPets),
+      mergeMap(() =>
+        this.petService.loadSoldPets().pipe(
+          map((pets) => PetActions.loadPetsSuccess({ pets })),
+          catchError((error) => of(PetActions.loadPetsFail(error)))
+        )
+      )
+    );
+  });
+
   constructor(private actions$: Actions, private petService: PetService) {}
 }

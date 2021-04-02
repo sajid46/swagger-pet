@@ -1,1 +1,135 @@
-<p>pet-create works!</p>
+<!-- <div class="container-fluid">
+  <div class="container jumbotron">
+    <h1>Create a Pet</h1>
+    <hr />
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Pet</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          formControlName="name"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="name">Date od Birth</label>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" />
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button mat-raised-button (click)="picker.open()">Open</button>
+      </div>
+
+      <div class="form-group">
+        <label class="image-upload-container btn btn-bwm">
+          <span>Select Image</span>
+        </label>
+        <input
+          style="display: none"
+          type="file"
+          (change)="onFileChanged($event)"
+          #fileInput
+        />
+        <button (click)="fileInput.click()">Select File</button>
+        <button (click)="onUpload()">Upload!</button>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Available</label>
+        <section class="example-section">
+          <mat-checkbox
+            id="available"
+            name="available"
+            formControlName="available"
+            class="example-margin"
+            [(ngModel)]="checked"
+            >Available</mat-checkbox
+          >
+        </section>
+      </div>
+
+      <div class="form-group">
+        <button
+          type="submit"
+          [disabled]="contactForm.pristine"
+          mat-flat-button
+          color="primary"
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          (click)="cancel()"
+          mat-flat-button
+          color="primary"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+<div class="container-fluid">
+  <div class="container jumbotron">
+    <h1>Create a Pet</h1>
+    <hr />
+    <form
+      class="example-form"
+      [formGroup]="contactForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <p>
+        <mat-form-field class="w-100">
+          <mat-label>Pet</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="w-100">
+          <input matInput />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-checkbox
+          id="available"
+          name="available"
+          formControlName="available"
+          class="example-margin"
+          [(ngModel)]="checked"
+          >Available</mat-checkbox
+        >
+      </p>
+
+      <p>
+        <button
+          type="submit"
+          [disabled]="contactForm.pristine"
+          mat-flat-button
+          color="primary"
+        >
+          Save
+        </button>
+        <button type="button" (click)="cancel()" mat-flat-button color="danger">
+          Cancel
+        </button>
+      </p>
+    </form>
+  </div>
+</div>

@@ -1,5 +1,7 @@
-import { Input } from '@angular/core';
+import { EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
 import { IPet } from '../shared/model/pet.model';
 
@@ -8,9 +10,17 @@ import { IPet } from '../shared/model/pet.model';
   templateUrl: './pet-list.component.html',
   styleUrls: ['./pet-list.component.scss'],
 })
-export class PetListComponent implements OnInit {
+export class PetListComponent {
   @Input() pets$: Observable<IPet[]>;
+  @Output() petDetailEvent = new EventEmitter<IPet[]>();
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  pets2$: Observable<any[]>;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  viewDetails(event: IPet[]): void {
+    this.petDetailEvent.emit(event);
+  }
 }
