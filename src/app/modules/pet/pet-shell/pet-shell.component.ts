@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class PetShellComponent extends BaseComponent implements OnInit {
   pets$: Observable<IPet[]>;
-  showPetCreate: boolean;
+  showPetCreate: boolean = true;
 
   constructor(private dialog: MatDialog, private petFacade: PetFacade) {
     super();
@@ -22,8 +22,6 @@ export class PetShellComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.petFacade.loadPets();
     this.pets$ = this.petFacade.pets$;
-
-    this.showPetCreate = false;
   }
 
   onPetDetailEventListener($event: IPet[]): void {

@@ -8,7 +8,6 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { BaseComponent } from './shared/components/base/base.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MatIconModule } from '@angular/material/icon';
 import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { MaterialModule } from './shared/material/material.module';
@@ -26,12 +25,12 @@ import { FormsModule } from '@angular/forms';
       maxAge: 45,
       logOnly: environment.production,
     }),
-    MatIconModule,
+
     BrowserAnimationsModule,
     EffectsModule.forRoot([]),
-    MaterialModule,
     HttpClientModule,
     FormsModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

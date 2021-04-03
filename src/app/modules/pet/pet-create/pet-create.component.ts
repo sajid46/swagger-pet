@@ -1,18 +1,27 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ImageService } from 'src/app/shared/service/image.service';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import {
+  AppDateAdapter,
+  DATE_FORMAT_GB,
+} from 'src/app/shared/helper/date-format';
 
 @Component({
   selector: 'app-pet-create',
   templateUrl: './pet-create.component.html',
   styleUrls: ['./pet-create.component.scss'],
+  providers: [
+    { provide: DateAdapter, useClass: AppDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT_GB },
+  ],
 })
 export class PetCreateComponent implements OnInit {
   contactForm: FormGroup;
   @Output() hideCreateForm = new EventEmitter();
   checked: boolean;
   selectedFile: File;
+  startDate: Date = new Date();
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
 
