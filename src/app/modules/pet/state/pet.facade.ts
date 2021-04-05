@@ -13,14 +13,6 @@ export class PetFacade {
 
   loadPets(): void {
     this.store.dispatch(PetActions.loadPets());
-    // this.store.dispatch(PetActions.loadPendingPets());
-    // this.store.dispatch(PetActions.loadSoldPets());
-  }
-
-  loadPet(id: number): void {
-    this.store.dispatch(PetActions.loadPet({ id }));
-    // this.store.dispatch(PetActions.loadPendingPets());
-    // this.store.dispatch(PetActions.loadSoldPets());
   }
 
   constructor(private store: Store) {}

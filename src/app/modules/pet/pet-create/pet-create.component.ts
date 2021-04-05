@@ -52,11 +52,6 @@ export class PetCreateComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
     this.newPetForm = this.createFormGroup();
     this.checked = true;
-
-    // this.petFacade.loadPet(2);
-    // this.pet$ = this.petFacade.pet$;
-
-    // this.pets$.subscribe((p) => alert(p.length));
   }
 
   createFormGroup() {
@@ -89,9 +84,6 @@ export class PetCreateComponent extends BaseComponent implements OnInit {
   }
 
   saveNewPet(): void {
-    // const uploadData = new FormData();
-    // uploadData.append('image', this.selectedFile, this.selectedFile.name);
-    // this.petService.uploadImage(uploadData, id);
     var r = this.imageUrl;
     this.ShowUploadButton = false;
     this.id = Math.floor(Math.random() * 10000000);

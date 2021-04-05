@@ -57,9 +57,6 @@ export class PetDetailDialogComponent implements OnInit {
   }
 
   onUpload(id: number): void {
-    // const uploadData = new FormData();
-    // uploadData.append('image', this.selectedFile, this.selectedFile.name);
-    // this.petService.uploadImage(uploadData, id);
     if (this.imageUrl) {
       var r = this.imageUrl;
       this.ShowUploadButton = false;

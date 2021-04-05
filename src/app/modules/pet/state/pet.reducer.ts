@@ -51,34 +51,5 @@ export const PetReducer = createReducer<PetState>(
         error: action.error,
       };
     }
-  ),
-  on(
-    PetActions.loadPetSuccess,
-    (state, action): PetState => {
-      return {
-        ...state,
-        pet: action.pet,
-      };
-    }
-  ),
-  on(
-    PetActions.loadPetFail,
-    (state, action): PetState => {
-      return {
-        ...state,
-        pet: undefined,
-        error: action.error,
-      };
-    }
   )
-
-  //, on(
-  //   PetActions.loadPetsSuccess,
-  //   (state, action): PetState => {
-  //     return {
-  //       ...state,
-  //       pets: state.pets.concat(action.pets),
-  //     };
-  //   }
-  // )
 );

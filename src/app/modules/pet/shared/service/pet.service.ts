@@ -10,8 +10,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PetService {
-  // });
-
   baseUrl: string;
 
   constructor(private http: HttpClient) {
@@ -32,17 +30,6 @@ export class PetService {
       )
     );
   }
-
-  // loadPendingPets(): Observable<IPet[]> {
-  //   var pets = this.http.get<IPet[]>(
-  //     `${this.baseUrl}findByStatus?status=pending`
-  //   );
-  //   return pets;
-  // }
-  // loadSoldPets(): Observable<IPet[]> {
-  //   var pets = this.http.get<IPet[]>(`${this.baseUrl}findByStatus?status=sold`);
-  //   return pets;
-  // }
 
   loadPet(id: number): Observable<IPet[]> {
     return this.http.get<IPet[]>(`${this.baseUrl}${id}`);

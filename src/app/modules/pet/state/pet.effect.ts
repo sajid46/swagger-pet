@@ -19,40 +19,5 @@ export class PetEffects {
     );
   });
 
-  loadPet$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(PetActions.loadPet),
-      mergeMap((action) =>
-        this.petService.loadPet(action.id).pipe(
-          map((pet) => PetActions.loadPetSuccess({ pet })),
-          catchError((error) => of(PetActions.loadPetFail(error)))
-        )
-      )
-    );
-  });
-  // loadPendingPets$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(PetActions.loadPets),
-  //     mergeMap(() =>
-  //       this.petService.loadPendingPets().pipe(
-  //         map((pets) => PetActions.loadPetsSuccess({ pets })),
-  //         catchError((error) => of(PetActions.loadPetsFail(error)))
-  //       )
-  //     )
-  //   );
-  // });
-
-  // loadSoldPets$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(PetActions.loadPets),
-  //     mergeMap(() =>
-  //       this.petService.loadSoldPets().pipe(
-  //         map((pets) => PetActions.loadPetsSuccess({ pets })),
-  //         catchError((error) => of(PetActions.loadPetsFail(error)))
-  //       )
-  //     )
-  //   );
-  // });
-
   constructor(private actions$: Actions, private petService: PetService) {}
 }
