@@ -9,11 +9,13 @@ import { IPet } from '../shared/model/pet.model';
 import * as PetActions from './pet.actions';
 
 export interface PetState extends AppState.state {
-  pets: any[];
+  pet: IPet[];
+  pets: IPet[];
   error: string;
 }
 
 const initialState = {
+  pet: [],
   pets: [],
   error: '',
 };
@@ -24,6 +26,11 @@ export const getSelPets = createSelector(
   (state) => state.pets
 );
 
+export const getSelPet = createSelector(
+  getPetFeatureState,
+  (state) => state.pet
+);
+
 export const PetReducer = createReducer<PetState>(
   initialState,
   on(
@@ -31,7 +38,7 @@ export const PetReducer = createReducer<PetState>(
     (state, action): PetState => {
       return {
         ...state,
-        pets: state.pets.concat(action.pets),
+        pets: action.pets,
       };
     }
   ),
@@ -44,5 +51,34 @@ export const PetReducer = createReducer<PetState>(
         error: action.error,
       };
     }
+  ),
+  on(
+    PetActions.loadPetSuccess,
+    (state, action): PetState => {
+      return {
+        ...state,
+        pet: action.pet,
+      };
+    }
+  ),
+  on(
+    PetActions.loadPetFail,
+    (state, action): PetState => {
+      return {
+        ...state,
+        pet: undefined,
+        error: action.error,
+      };
+    }
   )
+
+  //, on(
+  //   PetActions.loadPetsSuccess,
+  //   (state, action): PetState => {
+  //     return {
+  //       ...state,
+  //       pets: state.pets.concat(action.pets),
+  //     };
+  //   }
+  // )
 );

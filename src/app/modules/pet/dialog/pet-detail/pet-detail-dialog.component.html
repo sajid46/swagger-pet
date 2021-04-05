@@ -6,10 +6,31 @@
   </mat-card-header>
 
   <mat-card-content>
-    <img src="{{ data.photoUrls }}" alt="No Image" />
+    <img [src]="imageUrl" alt="No Image" />
+    <p>
+      <input
+        type="file"
+        style="display: none"
+        (change)="onFileChanged($event)"
+        #fileInput
+      />
+      <button (click)="fileInput.click()" mat-flat-button color="primary">
+        Get Image
+      </button>
+      <button
+        *ngIf="ShowUploadButton == true"
+        (click)="onUpload(data.id)"
+        mat-flat-button
+        color="primary"
+        class="ml-3"
+      >
+        Upload!
+      </button>
+    </p>
   </mat-card-content>
 
   <div *ngIf="data.status == 'available'">
+    <label for="">Status: </label>
     <mat-card-subtitle style="color: green">{{
       data.status
     }}</mat-card-subtitle>
@@ -27,7 +48,9 @@
 
   <mat-card-actions>
     <div mat-dialog-actions>
-      <button mat-button (click)="closeDialog()">Close</button>
+      <button mat-button (click)="closeDialog()" mat-flat-button color="warn">
+        Cancel
+      </button>
     </div>
   </mat-card-actions>
 </mat-card>

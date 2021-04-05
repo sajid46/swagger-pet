@@ -1,9 +1,9 @@
 export interface IPet {
   id: number;
-  category: category[];
+  category: category;
   name: string;
-  photoUrls: photos[];
-  tags: tags[];
+  photoUrls: photos;
+  tags: tags;
   status: string;
 }
 

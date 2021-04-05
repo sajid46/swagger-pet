@@ -1,98 +1,30 @@
-<!-- <div class="container-fluid">
-  <div class="container jumbotron">
-    <h1>Create a Pet</h1>
-    <hr />
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="name">Pet</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          formControlName="name"
-          class="form-control"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="name">Date od Birth</label>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker" />
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <button mat-raised-button (click)="picker.open()">Open</button>
-      </div>
-
-      <div class="form-group">
-        <label class="image-upload-container btn btn-bwm">
-          <span>Select Image</span>
-        </label>
-        <input
-          style="display: none"
-          type="file"
-          (change)="onFileChanged($event)"
-          #fileInput
-        />
-        <button (click)="fileInput.click()">Select File</button>
-        <button (click)="onUpload()">Upload!</button>
-      </div>
-
-      <div class="form-group">
-        <label for="status">Available</label>
-        <section class="example-section">
-          <mat-checkbox
-            id="available"
-            name="available"
-            formControlName="available"
-            class="example-margin"
-            [(ngModel)]="checked"
-            >Available</mat-checkbox
-          >
-        </section>
-      </div>
-
-      <div class="form-group">
-        <button
-          type="submit"
-          [disabled]="contactForm.pristine"
-          mat-flat-button
-          color="primary"
-        >
-          Save
-        </button>
-        <button
-          type="button"
-          (click)="cancel()"
-          mat-flat-button
-          color="primary"
-        >
-          Cancel
-        </button>
-      </div>
-    </form>
-  </div>
-</div> -->
-
 <div class="container-fluid">
   <div class="container jumbotron">
-    <h1>Create a Pet</h1>
-    <hr />
-    <form
-      class="example-form"
-      [formGroup]="contactForm"
-      (ngSubmit)="onSubmit()"
-    >
+    <h1>Add New Pet</h1>
+    <br />
+    <form class="example-form" [formGroup]="newPetForm" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field class="w-100">
           <mat-label>Pet</mat-label>
-          <input matInput />
+          <input
+            matInput
+            id="name"
+            name="name"
+            formControlName="name"
+            style="text-transform: capitalize"
+          />
         </mat-form-field>
       </p>
 
-      <p>
+      <!-- <p>
         <mat-form-field>
-          <input matInput [matDatepicker]="datePicker" />
+          <input
+            matInput
+            [matDatepicker]="datePicker"
+            id="dob"
+            name="dob"
+            formControlName="dob"
+          />
           <mat-datepicker-toggle
             [for]="datePicker"
             matSuffix
@@ -103,15 +35,39 @@
             [startAt]="startDate"
           ></mat-datepicker>
         </mat-form-field>
+      </p> -->
+
+      <p>
+        <img [src]="imageUrl" />
+      </p>
+      <p>
+        <input
+          type="file"
+          style="display: none"
+          (change)="onFileChanged($event)"
+          #fileInput
+          mat-flat-button
+          color="primary"
+          id="imageUrl"
+          name="imageUrl"
+          formControlName="imageUrl"
+        />
+        <input
+          type="button"
+          (click)="fileInput.click()"
+          mat-flat-button
+          color="primary"
+          value="Get Image"
+        />
       </p>
 
       <p>
         <mat-checkbox
-          id="available"
-          name="available"
-          formControlName="available"
+          id="status"
+          name="status"
+          formControlName="status"
           class="example-margin"
-          [(ngModel)]="checked"
+          disabled
           >Available</mat-checkbox
         >
       </p>
@@ -119,13 +75,19 @@
       <p>
         <button
           type="submit"
-          [disabled]="contactForm.pristine"
+          [disabled]="newPetForm.pristine"
           mat-flat-button
           color="primary"
         >
           Save
         </button>
-        <button type="button" (click)="cancel()" mat-flat-button color="danger">
+        <button
+          type="button"
+          (click)="cancel()"
+          mat-flat-button
+          color="warning"
+          class="ml-3"
+        >
           Cancel
         </button>
       </p>

@@ -13,9 +13,15 @@ import { EffectsModule } from '@ngrx/effects';
 import { MaterialModule } from './shared/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PetSnackBarComponent } from './shared/components/pet-snack-bar/pet-snack-bar.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, BaseComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    BaseComponent,
+    PetSnackBarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

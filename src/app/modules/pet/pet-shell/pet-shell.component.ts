@@ -5,6 +5,7 @@ import { BaseComponent } from 'src/app/shared/components/base/base.component';
 import { IPet } from '../shared/model/pet.model';
 import { PetFacade } from '../state/pet.facade';
 import { MatDialog } from '@angular/material/dialog';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pet-shell',
@@ -13,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class PetShellComponent extends BaseComponent implements OnInit {
   pets$: Observable<IPet[]>;
-  showPetCreate: boolean = true;
+  showPetCreate: boolean = false;
 
   constructor(private dialog: MatDialog, private petFacade: PetFacade) {
     super();
@@ -21,7 +22,7 @@ export class PetShellComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.petFacade.loadPets();
-    this.pets$ = this.petFacade.pets$;
+    this.pets$ = this.petFacade.pets$.pipe(takeUntil(this.unsubscribe$));
   }
 
   onPetDetailEventListener($event: IPet[]): void {
