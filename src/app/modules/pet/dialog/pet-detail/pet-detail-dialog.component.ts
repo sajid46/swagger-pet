@@ -40,7 +40,7 @@ export class PetDetailDialogComponent implements OnInit {
   }
 
   closeDialog(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 
   onFileChanged(event) {
@@ -68,9 +68,7 @@ export class PetDetailDialogComponent implements OnInit {
 
       if (uploaded == true) {
         this.openSnackBar();
-        this.petFacade.loadPets();
-        this.pets$ = this.petFacade.pets$;
-        this.closeDialog();
+        this.dialogRef.close(true);
       }
     }
   }

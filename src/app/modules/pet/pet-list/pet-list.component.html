@@ -1,10 +1,10 @@
-<div class="css-container-child" *ngIf="pets$ | async as pets">
-  <div class="css-each-page-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div *ngIf="pets$ | async as pets">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="w-100 text-center">
       <h1>Pets</h1>
     </div>
     <hr />
-    <div class="css-each-page-title col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="table">
         <div *ngFor="let pet of pets; let i = index" class="row">
           <div class="cell">

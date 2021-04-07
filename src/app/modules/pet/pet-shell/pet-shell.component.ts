@@ -5,7 +5,7 @@ import { BaseComponent } from 'src/app/shared/components/base/base.component';
 import { IPet } from '../shared/model/pet.model';
 import { PetFacade } from '../state/pet.facade';
 import { MatDialog } from '@angular/material/dialog';
-import { takeUntil } from 'rxjs/operators';
+import { first, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pet-shell',
@@ -25,8 +25,17 @@ export class PetShellComponent extends BaseComponent implements OnInit {
     this.pets$ = this.petFacade.pets$.pipe(takeUntil(this.unsubscribe$));
   }
 
-  onPetDetailEventListener($event: IPet[]): void {
-    this.dialog.open(PetDetailDialogComponent, { data: $event });
+  onPetDetailEventListener($event: IPet): void {
+    this.dialog
+      .open(PetDetailDialogComponent, { data: $event })
+      .afterClosed()
+      .pipe(first())
+      .subscribe((result: boolean) => {
+        if (result == true) {
+          this.petFacade.loadPets();
+          this.pets$ = this.petFacade.pets$;
+        }
+      });
   }
 
   addPet(): void {
