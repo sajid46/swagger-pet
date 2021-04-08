@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 
 import * as PetActions from '../state/pet.actions';
@@ -13,6 +14,10 @@ export class PetFacade {
 
   loadPets(): void {
     this.store.dispatch(PetActions.loadPets());
+  }
+
+  saveUser(newUserForm: FormGroup) {
+    this.store.dispatch(PetActions.saveUser({ newUserForm }));
   }
 
   constructor(private store: Store) {}

@@ -12,8 +12,10 @@ import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { MaterialModule } from './shared/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PetSnackBarComponent } from './shared/components/pet-snack-bar/pet-snack-bar.component';
+import { UserLoginComponent } from './shared/components/user-login/user-login.component';
+import { UserSignupComponent } from './shared/components/user-signup/user-signup.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { PetSnackBarComponent } from './shared/components/pet-snack-bar/pet-snac
     NavbarComponent,
     BaseComponent,
     PetSnackBarComponent,
+    UserLoginComponent,
+    UserSignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,8 @@ import { PetSnackBarComponent } from './shared/components/pet-snack-bar/pet-snac
     HttpClientModule,
     FormsModule,
     MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

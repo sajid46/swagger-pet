@@ -1,0 +1,66 @@
+<div class="container pt-5">
+  <div class="css-login">
+    <form
+      class="example-form"
+      [formGroup]="newUserLoginForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <h2>Login</h2>
+      <hr />
+      <div
+        class="col-xs-8 col-sm-8 col-md-8 col-lg-8 css-isuserExistno mt-3 p-0"
+      >
+        <p *ngIf="!isUserExistNo" style="color: blue">
+          Enter username and password
+        </p>
+        <p *ngIf="isUserExistNo" style="color: rgb(255, 51, 0)">
+          User does not exists
+        </p>
+      </div>
+      <p>
+        <mat-form-field class="css-full-width">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            id="username"
+            name="username"
+            formControlName="username"
+            (keyup)="inputChane()"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field class="css-full-width">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            id="password"
+            name="password"
+            formControlName="password"
+            (keyup)="inputChane()"
+          />
+        </mat-form-field>
+      </p>
+
+      <div class="example-button-row">
+        <input
+          type="submit"
+          [disabled]="newUserLoginForm.pristine"
+          mat-flat-button
+          color="primary"
+          value="Login"
+        />
+        <input
+          type="button"
+          mat-flat-button
+          color="warn"
+          class="ml-3"
+          value="Signup"
+          (click)="openSignup()"
+        />
+      </div>
+    </form>
+  </div>
+</div>

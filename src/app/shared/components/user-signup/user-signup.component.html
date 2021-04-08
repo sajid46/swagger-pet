@@ -1,0 +1,106 @@
+<div class="container pt-5">
+  <div class="css-login">
+    <form
+      class="example-form"
+      [formGroup]="newUserForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <h2>Sign Up</h2>
+      <hr />
+      <table class="css-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="css-full-width">
+              <mat-label>First name</mat-label>
+              <input
+                matInput
+                id="fname"
+                name="fname"
+                formControlName="fname"
+                style="text-transform: capitalize"
+              />
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="css-full-width">
+              <mat-label>Last Name</mat-label>
+              <input
+                matInput
+                id="sname"
+                name="sname"
+                formControlName="sname"
+                style="text-transform: capitalize"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <table class="css-full-width" cellspacing="0">
+        <tr>
+          <td class="w-75">
+            <mat-form-field class="css-full-width">
+              <mat-label>Email:</mat-label>
+              <input
+                matInput
+                id="email"
+                name="email"
+                formControlName="email"
+                style="text-transform: lowercase"
+              />
+            </mat-form-field>
+          </td>
+          <td class="w-25">
+            <mat-form-field class="css-full-width">
+              <mat-label>Phone:</mat-label>
+              <input
+                matInput
+                id="phone"
+                name="phone"
+                formControlName="phone"
+                style="text-transform: numeric"
+              />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <p class="w-50">
+        <mat-form-field class="css-full-width">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            id="username"
+            name="username"
+            formControlName="username"
+          />
+        </mat-form-field>
+      </p>
+
+      <p class="w-50">
+        <mat-form-field class="css-full-width">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            id="password"
+            name="password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </p>
+
+      <!-- [disabled]="newUserForm.pristine" -->
+      <div class="example-button-row">
+        <input type="submit" mat-flat-button color="primary" value="Save" />
+        <input
+          type="button"
+          mat-flat-button
+          color="warn"
+          class="ml-3"
+          value="Cancel"
+          (click)="openLogin()"
+        />
+      </div>
+    </form>
+  </div>
+</div>

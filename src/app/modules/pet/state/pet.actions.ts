@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { createAction, props } from '@ngrx/store';
 import { IPet } from '../shared/model/pet.model';
 
@@ -11,4 +12,9 @@ export const loadPetsSuccess = createAction(
 export const loadPetsFail = createAction(
   '[Pets] Load Pets Failed',
   props<{ error: string }>()
+);
+
+export const saveUser = createAction(
+  '[Pets] Load Pets Failed',
+  props<{ newUserForm: FormGroup }>()
 );

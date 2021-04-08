@@ -86,11 +86,12 @@ export class PetCreateComponent extends BaseComponent implements OnInit {
   saveNewPet(): void {
     var r = this.imageUrl;
     this.ShowUploadButton = false;
-    this.id = Math.floor(Math.random() * 10000000);
 
     this.petFacade.loadPets();
 
+    // get id which is not existed
     do {
+      this.id = Math.floor(Math.random() * 10000000);
       this.pets$ = this.petFacade.pets$.pipe(
         takeUntil(this.unsubscribe$),
         map((pets) => pets.filter((pet) => pet.id === this.id))
