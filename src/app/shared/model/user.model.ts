@@ -1,5 +1,4 @@
-export interface IUser {
-  userstatus: number;
+export class IUser {
   id: number;
   username: string;
   firstName: string;
@@ -7,4 +6,5 @@ export interface IUser {
   email: string;
   password: string;
   phone: string;
+  userStatus: number;
 }

@@ -17,6 +17,11 @@ const routes: Routes = [
     component: UserLoginComponent,
   },
   { path: 'signup', component: UserSignupComponent },
+  {
+    path: 'pet',
+    loadChildren: () =>
+      import('./modules/pet/pet.module').then((m) => m.PetModule),
+  },
 ];
 
 @NgModule({

@@ -22,6 +22,7 @@ export class UserSignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.newUserForm = this.createFormGroup();
+    this.iUser = new IUser();
   }
 
   createFormGroup() {
@@ -39,13 +40,14 @@ export class UserSignupComponent implements OnInit {
     this.saveUser();
   }
   saveUser() {
+    this.iUser.id = 0;
     this.iUser.firstName = this.newUserForm.value.fname;
     this.iUser.lastName = this.newUserForm.value.sname;
     this.iUser.email = this.newUserForm.value.email;
     this.iUser.phone = this.newUserForm.value.phone;
     this.iUser.username = this.newUserForm.value.username;
     this.iUser.password = this.newUserForm.value.password;
-    this.iUser.userstatus = 0;
+    this.iUser.userStatus = 0;
 
     this.appService.saveUser(this.iUser);
     // this.petFacade.saveUser(this.newUserForm);
